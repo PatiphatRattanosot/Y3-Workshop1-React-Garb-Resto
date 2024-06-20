@@ -2,7 +2,7 @@ import React from 'react'
 
 const Search = () => {
     return (
-        <label class="relative block w-full max-w-xs mx-auto ">
+        <label class="relative block w-full max-w-md mx-auto ">
             <span class="sr-only">Search</span>
             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
                 <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20">
