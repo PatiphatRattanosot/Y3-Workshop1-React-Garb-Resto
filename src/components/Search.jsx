@@ -1,21 +1,58 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
+const Search = ({ resto, setFilterResto }) => {
+  const [keyword, setKeyword] = useState("");
+  const searchItem = (e) => {
+    setKeyword(e.target.value);
+    // const result = await filter(resto, keyword);
+    if (e.target.value === "") {
+      setFilterResto(resto);
+      return;
+    }
+    const result = resto.filter((restaurant) => {
+      return (
+        restaurant.title.toLowerCase().includes(keyword.toLowerCase()) ||
+        restaurant.type.toLowerCase().includes(keyword.toLowerCase())
+      );
+    });
+    setFilterResto(result);
+  };
+  //   const filter = (resto, keyword) => {
+  //     const result = [];
+  //     for (let i = 0; i < resto.length; i++) {
+  //       if (
+  //         resto[i]?.title.toLowerCase().includes(keyword.toLowerCase()) ||
+  //         resto[i]?.typetoLowerCase().includes(keyword.toLowerCase())
+  //       ) {
+  //         result.push(resto[i].title);
+  //       }
+  //     }
+  //     console.log(result);
 
-const Search = () => {
-    return (
-        <label class="relative block w-full max-w-md mx-auto ">
-            <span class="sr-only">Search</span>
-            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20">
-                    <path
-                        fillRule="evenodd"
-                        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                        clipRule="evenodd"
-                    />
-                </svg>
-            </span>
-            <input class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Search for Restaurant..." type="text" name="search" />
-        </label>
-    )
-}
+  //     return result;
+  //   };
 
-export default Search
+  return (
+    <label class="relative block w-full max-w-md mx-auto ">
+      <span class="sr-only">Search</span>
+      <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+        <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20">
+          <path
+            fillRule="evenodd"
+            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </span>
+      <input
+        class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        placeholder="Search for Restaurant..."
+        type="text"
+        name="search"
+        onChange={searchItem}
+      />
+    </label>
+  );
+};
+
+export default Search;

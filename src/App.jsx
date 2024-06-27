@@ -1,20 +1,13 @@
-import './App.css'
-
-import Search from './components/Search';
-import Header from './components/Header';
-import Restaurant from './components/Restaurant';
-
-
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
-    <>
-     <div className="container flex flex-col items-center mx-auto space-y-6 ">
-      <Header />
-      <Search />
-      <Restaurant />
-     </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
