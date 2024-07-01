@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Homes, AddRestaurant } from "../pages/index";
+import EditRestaurant from "../pages/EditRestaurant";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -8,6 +9,10 @@ const router = createBrowserRouter([
   {
     path: "/add",
     element: <AddRestaurant />,
+  },
+  {
+    path: "/edit/:id",
+    element: <EditRestaurant />,
   },
 ]);
 
